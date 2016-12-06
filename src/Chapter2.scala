@@ -8,10 +8,10 @@ object Chapter2 {
     }
 
     if (n <= 1) n
-    else loop(n-1, 0, 1)
+    else loop(n - 1, 0, 1)
   }
 
-  def isSorted[A](as: Array[A], ordered: (A,A) => Boolean): Boolean = {
-
+  def isSorted[A](as: Array[A], ordered: (A, A) => Boolean): Boolean = {
+    false
   }
 }
