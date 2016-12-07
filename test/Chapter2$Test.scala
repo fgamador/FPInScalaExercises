@@ -20,4 +20,20 @@ class Chapter2$Test extends FunSuite {
     assert(isSorted(Array(1, 2, 3), lessThan))
     assert(!isSorted(Array(1, 3, 2), lessThan))
   }
+
+  test("testCurry") {
+    def plus(a: Int, b: Int): Int = a + b
+    assert(curry(plus)(2)(3) == 5)
+  }
+
+  test("testUncurry") {
+    def plus(a: Int, b: Int): Int = a + b
+    assert(uncurry(curry(plus))(2, 3) == 5)
+  }
+
+  test("testCompose") {
+    def plus1(a: Int): Int = a + 1
+    def times2(a: Int): Int = a * 2
+    assert(compose(times2, plus1)(2) == 6)
+  }
 }
