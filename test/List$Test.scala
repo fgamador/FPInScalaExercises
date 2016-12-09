@@ -21,4 +21,12 @@ class List$Test extends FunSuite {
     assert(List.drop(List("A", "B"), 2) == Nil)
     assert(List.drop(List("A", "B"), 3) == Nil)
   }
+
+  test("testDropWhile") {
+    val f = (i: Int) => i < 3
+    assert(List.dropWhile(Nil, f) == Nil)
+    assert(List.dropWhile(List(3), f) == List(3))
+    assert(List.dropWhile(List(1), f) == Nil)
+    assert(List.dropWhile(List(1, 2, 3), f) == List(3))
+  }
 }

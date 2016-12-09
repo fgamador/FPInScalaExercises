@@ -29,10 +29,19 @@ object List {
   }
 
   def drop[A](l: List[A], n: Int): List[A] = {
+    @annotation.tailrec
     def loop(times: Int, l: List[A]): List[A] = {
       if (times == 0 || l == Nil) l
       else loop(times - 1, tail(l))
     }
     loop(n, l)
+  }
+
+  @annotation.tailrec
+  def dropWhile[A](l: List[A], f: A => Boolean): List[A] = l match {
+    case Nil => Nil
+    case Cons(x, rest) =>
+      if (f(x)) dropWhile(rest, f)
+      else l
   }
 }
