@@ -22,4 +22,17 @@ object List {
     case Nil => Nil
     case Cons(_, rest) => rest
   }
+
+  def setHead[A](as: List[A], a: A) : List[A] = as match {
+    case Nil => Nil
+    case Cons(_, rest) => Cons(a, rest)
+  }
+
+  def drop[A](l: List[A], n: Int): List[A] = {
+    def loop(times: Int, l: List[A]): List[A] = {
+      if (times == 0 || l == Nil) l
+      else loop(times - 1, tail(l))
+    }
+    loop(n, l)
+  }
 }
