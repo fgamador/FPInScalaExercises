@@ -29,4 +29,10 @@ class List$Test extends FunSuite {
     assert(List.dropWhile(List(1), f) == Nil)
     assert(List.dropWhile(List(1, 2, 3), f) == List(3))
   }
+
+  test("testInit") {
+    assert(List.init(Nil) == Nil)
+    assert(List.init(List(1)) == Nil)
+    assert(List.init(List(1, 2)) == List(1))
+  }
 }
