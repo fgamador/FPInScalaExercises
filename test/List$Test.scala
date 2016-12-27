@@ -68,4 +68,27 @@ class List$Test extends FunSuite {
     assert(reverse(List(2)) == List(2))
     assert(reverse(List(1, 2, 3)) == List(3, 2, 1))
   }
+
+  test("testSum_FoldLeft") {
+    assert(List.sum_fl(Nil) == 0)
+    assert(List.sum_fl(List(2)) == 2)
+    assert(List.sum_fl(List(1, 2, 3)) == 6)
+  }
+
+  test("testProduct_FoldLeft") {
+    assert(List.product_fl(Nil) == 1)
+    assert(List.product_fl(List(2)) == 2)
+    assert(List.product_fl(List(2, 3)) == 6)
+  }
+
+  test("testLength_FoldLeft") {
+    assert(List.length_fl(Nil) == 0)
+    assert(List.length_fl(List(1, 2, 3)) == 3)
+  }
+
+  test("testReverse_FoldLeft") {
+    assert(List.reverse_fl(Nil) == Nil)
+    assert(List.reverse_fl(List(2)) == List(2))
+    assert(List.reverse_fl(List(1, 2, 3)) == List(3, 2, 1))
+  }
 }

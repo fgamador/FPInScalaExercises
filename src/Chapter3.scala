@@ -76,4 +76,16 @@ object List {
 
     loop(z, as)
   }
+
+  def sum_fl(as: List[Int]): Int =
+    foldLeft(as, 0)(_ + _)
+
+  def product_fl(as: List[Double]): Double =
+    foldLeft(as, 1.0)(_ * _)
+
+  def length_fl[A](as: List[A]): Int =
+    foldLeft(as, 0)((x, _) => x + 1)
+
+  def reverse_fl[A](as: List[A]): List[A] =
+    foldLeft(as, Nil: List[A])((t, h) => Cons(h, t))
 }
