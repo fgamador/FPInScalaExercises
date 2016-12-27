@@ -35,4 +35,37 @@ class List$Test extends FunSuite {
     assert(List.init(List(1)) == Nil)
     assert(List.init(List(1, 2)) == List(1))
   }
+
+  test("testFoldRight_Sum") {
+    val sum = (l: List[Int]) => List.foldRight(l, 0)(_ + _)
+    assert(sum(Nil) == 0)
+    assert(sum(List(2)) == 2)
+    assert(sum(List(1, 2, 3)) == 6)
+  }
+
+  test("testFoldRight_List") {
+    val copy = (l: List[Int]) => List.foldRight(l, Nil: List[Int])(Cons(_, _))
+    assert(copy(Nil) == Nil)
+    assert(copy(List(2)) == List(2))
+    assert(copy(List(1, 2, 3)) == List(1, 2, 3))
+  }
+
+  test("testLength") {
+    assert(List.length(Nil) == 0)
+    assert(List.length(List(1, 2, 3)) == 3)
+  }
+
+  test("testFoldLeft_Sum") {
+    val sum = (l: List[Int]) => List.foldLeft(l, 0)(_ + _)
+    assert(sum(Nil) == 0)
+    assert(sum(List(2)) == 2)
+    assert(sum(List(1, 2, 3)) == 6)
+  }
+
+  test("testFoldLeft_List") {
+    val reverse = (l: List[Int]) => List.foldLeft(l, Nil: List[Int])((t, h) => Cons(h, t))
+    assert(reverse(Nil) == Nil)
+    assert(reverse(List(2)) == List(2))
+    assert(reverse(List(1, 2, 3)) == List(3, 2, 1))
+  }
 }
